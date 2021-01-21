@@ -2,6 +2,6 @@
 
 mkdir builds
 pushd builds
-cl ../%1 -Zi
+cl ../%1 -Zi -EHsc
 
 popd ..
