@@ -20,5 +20,13 @@ as I go through the book.
 ## How to run
 For example: inside `chapter01` folder run: `builds\exercise_1_1.exe`
 
+## How to debug
+For example: inside `chapter02` folder run: `builds\exercise_1_1.exe`
+
+I just drag-and-drop source file inside Visual Studio, point is: make sure to open source file in Visual Studio
+- `F5` Start debugging
+- `F10` Step over
+- `F11` Step into
+ 
 ## Documentation and learning resources
 Additional resources will go here.
