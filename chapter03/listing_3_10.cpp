@@ -29,8 +29,8 @@ int main()
     for (Element *cursor = &trooper1; cursor; cursor = cursor->next)
     {
         printf("stormtrooper %c%c-%d\n",
-        cursor->prefix[0],
-        cursor->prefix[1],
-        cursor->operating_number);
+            cursor->prefix[0],
+            cursor->prefix[1],
+            cursor->operating_number);
     }
 }
