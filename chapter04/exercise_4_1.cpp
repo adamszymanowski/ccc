@@ -1,18 +1,24 @@
 #include <windows.h>
 #include <cstdio>
+#include <stdexcept>
+
+struct TimerClass
+{
+    TimerClass()
+    {
+        LARGE_INTEGER ticks;
+        if (!QueryPerformanceCounter(&ticks))
+        {
+            std::runtime_error{"ERROR: QueryPerformanceCounter failed!"};
+        }
+        timestamp = ticks.QuadPart;
+    }
+    
+    int64_t timestamp;
+};
 
 int main()
 {
-    FILETIME SysTimeAsFileTime;
-    GetSystemTimePreciseAsFileTime(&SysTimeAsFileTime);
-
-    SYSTEMTIME SysTime;
-    if(FileTimeToSystemTime(&SysTimeAsFileTime, &SysTime))
-    {
-        printf("Date: %d.%d.%d\n", SysTime.wYear, SysTime.wMonth, SysTime.wDay);
-    }
-    else
-    {
-        printf("FileTimeToSystemTime ERROR\n"); // just basic error info for now
-    }
+    TimerClass tc;
+    printf("timestamp: %llu\n", tc.timestamp);
 }
