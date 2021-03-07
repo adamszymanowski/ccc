@@ -13,7 +13,7 @@ struct TimerClass
             std::runtime_error{"ERROR: QueryPerformanceCounter failed!"};
         }
         timestamp = ticks.QuadPart;
-        printf("[%s]start: %llu\n", tagged, timestamp);
+        printf("[%s]\tstart: %llu\n", tagged, timestamp);
     }
 
     ~TimerClass() // Destructor
@@ -23,9 +23,7 @@ struct TimerClass
         {
             std::runtime_error{"ERROR: QueryPerformanceCounter failed!"};
         }
-
-        //printf("[%s]stop : %llu\n", tagged, ticks.QuadPart);
-        printf("[%s]delta: %llu\n", tagged, ticks.QuadPart-timestamp);
+        printf("[%s]\tdelta: %llu\n", tagged, ticks.QuadPart-timestamp);
     }
 
     TimerClass(TimerClass& tc) // Copy Constructor
@@ -35,6 +33,16 @@ struct TimerClass
             snprintf(temp_buff, sizeof(temp_buff), "copy of %s", tc.tagged);
             std::strncpy(tagged, temp_buff, sizeof(tagged));
         }
+
+    TimerClass& operator=(TimerClass& tc) // Copy Assignment
+    {
+        if (this == &tc) return *this;
+        timestamp = tc.timestamp;
+        char temp_buff[64];
+        snprintf(temp_buff, sizeof(temp_buff), "%s is copy of %s", tagged, tc.tagged);
+        std::strncpy(tagged, temp_buff, sizeof(tagged));
+        return *this;
+    }
     
 
     int64_t timestamp;
@@ -48,5 +56,6 @@ int main()
     TimerClass tc1{ "tc1" };
     TimerClass tc2{ "tc2" };
     TimerClass tc3{ tc2 };
-
+    TimerClass tc4{ "tc4" };
+    tc4 = tc1;
 }
