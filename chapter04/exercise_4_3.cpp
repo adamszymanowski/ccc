@@ -4,7 +4,7 @@
 
 struct TimerClass
 {
-    TimerClass(char* tag) // Constructor
+    TimerClass(const char* tag) // Constructor
     {
         snprintf(tagged, sizeof(tagged), "%s", tag);
         LARGE_INTEGER ticks;
@@ -26,7 +26,7 @@ struct TimerClass
         printf("[%s]\tdelta: %llu\n", tagged, ticks.QuadPart-timestamp);
     }
 
-    TimerClass(TimerClass& tc) // Copy Constructor
+    TimerClass(const TimerClass& tc) // Copy Constructor
         : timestamp{ tc.timestamp }
         {
             char temp_buff[64];
@@ -34,7 +34,7 @@ struct TimerClass
             std::strncpy(tagged, temp_buff, sizeof(tagged));
         }
 
-    TimerClass& operator=(TimerClass& tc) // Copy Assignment
+    TimerClass& operator=(const TimerClass& tc) // Copy Assignment
     {
         if (this == &tc) return *this;
         timestamp = tc.timestamp;
