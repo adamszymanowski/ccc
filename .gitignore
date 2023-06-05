@@ -1,0 +1,9 @@
+# Windows specific
+/sources/*.vs
+*.exe
+*.ilk
+*.obj
+*.pdb
+
+# General
+builds/*
