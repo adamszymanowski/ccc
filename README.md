@@ -25,6 +25,9 @@ MAKE SURE, you use **x64 Native Tools Command Prompt**, more on that [here](http
     - `F5` Start debugging
     - `F10` Step over
     - `F11` Step into
+- **How to run**
+- run script, for example: `run.bat listing-1-1`
+
  
 ## Linux (gcc)
 I use `g++`
