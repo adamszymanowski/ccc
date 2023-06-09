@@ -4,6 +4,7 @@
 *.ilk
 *.obj
 *.pdb
+*.sln
 
 # General
 builds/*
