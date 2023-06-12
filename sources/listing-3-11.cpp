@@ -5,7 +5,6 @@ int main() {
     int& original_ref = original;
     printf("Original: %d\n", original);
     printf("Reference: %d\n", original_ref);
-    printf("Original at %p, Reference at %p\n", &original, original_ref);
 
     int new_value = 200;
     original_ref = new_value;
